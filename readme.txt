@@ -1,3 +1,4 @@
+-- Pre-requisites -> Windows OS, Vagrant, Oracle VirtualBox
 --Run doEverything with administrative privilages, in ideal cases, this should be enough, kafka broker will be available at 192.168.56.3:9092
 
 -- Steps to Manually configure Windows Firewall: -  
