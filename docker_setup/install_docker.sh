@@ -8,3 +8,4 @@ sudo apt install docker-ce docker-ce-cli containerd.io --assume-yes
 sudo usermod -aG docker $USER
 newgrp docker
 dos2unix create_offsets.sh
+sudo apt-get install docker-compose-plugin

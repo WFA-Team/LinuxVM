@@ -29,3 +29,4 @@ Give it a name like Allow Ping on vboxnet0 and click Finish.
 -- Useful debugging commands : -
 kafkacat -C -b 192.168.56.3 -t test-topic
 nc -zv 192.168.56.1 9092
+sudo docker run -it --rm confluentinc/ksqldb-cli:latest ksql http://192.168.56.3:9095

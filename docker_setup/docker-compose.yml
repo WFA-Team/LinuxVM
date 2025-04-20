@@ -1,0 +1,18 @@
+services:
+  schema-registry:
+    image: confluentinc/cp-schema-registry:latest
+    container_name: schema-registry
+    network_mode: "host"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://192.168.56.3:9092
+      SCHEMA_REGISTRY_LISTENERS: http://192.168.56.3:9094
+
+  ksqldb-server:
+    image: confluentinc/ksqldb-server:latest
+    container_name: ksqldb-server
+    network_mode: "host"
+    environment:
+      KSQL_LISTENERS: http://192.168.56.3:9095
+      KSQL_KSQL_SCHEMA_REGISTRY_URL: http://192.168.56.3:9094
+      KSQL_BOOTSTRAP_SERVERS: PLAINTEXT://192.168.56.3:9092
