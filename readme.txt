@@ -30,3 +30,21 @@ Give it a name like Allow Ping on vboxnet0 and click Finish.
 kafkacat -C -b 192.168.56.3 -t test-topic
 nc -zv 192.168.56.1 9092
 sudo docker run -it --rm confluentinc/ksqldb-cli:latest ksql http://192.168.56.3:9095
+
+kafkacat -b 192.168.56.3:9092 \
+     -t Sample \
+     -s value=avro \
+     -r http://192.168.56.3:9094 \
+     -o beginning \
+     -C
+     
+ksql> CREATE STREAM events (
+>  key1 STRING,
+>  key2 DOUBLE,
+>  key3 BIGINT
+>) WITH (
+>  KAFKA_TOPIC = 'Sample',
+>  VALUE_FORMAT = 'AVRO'
+>);
+
+SELECT * FROM events EMIT CHANGES;
